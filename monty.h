@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 #define INITIAL_BUF_SIZE 64;
-#define ARGS_DELIM " \t\r\n\a"
+#define ARGS_DELIM " \t\r\n\a$"
 
 
 /**
@@ -37,6 +37,30 @@ typedef struct instruction_s
   void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern stack_t *stack;
+
+/* Essential functions */
 void loop(FILE *bytecode);
+
+void parse(char *line, unsigned int line_number);
+
+/* Opcodes */
+void push(stack_t **stack, unsigned int line_number);
+
+void pall(stack_t **stack, unsigned int line_number);
+
+void pint(stack_t **stack, unsigned int line_number);
+
+void pop(stack_t **stack, unsigned int line_number);
+
+void swap(stack_t **stack, unsigned int line_number);
+
+void add(stack_t **stack, unsigned int line_number);
+
+void nop(stack_t **stack, unsigned int line_number);
+
+
+/* Utilities */
+void trim(char *str);
 
 #endif

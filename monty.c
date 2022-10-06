@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "monty.h"
 
+stack_t *stack = NULL;
+
 /**
 * main - Monty program entrypoint
 *
@@ -13,6 +15,8 @@
 int main (int argc, char *argv[])
 {
   FILE *bytecode;
+  stack_t concrete_stack = { 0, NULL, NULL };
+  stack = &concrete_stack;
 
   if (argc < 2)
   {
